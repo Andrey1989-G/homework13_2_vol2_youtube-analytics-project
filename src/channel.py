@@ -2,7 +2,7 @@ from googleapiclient.discovery import build
 
 class Channel:
     """Класс для ютуб-канала"""
-    api_key = 'AIzaSyAxQ9B1lWmxKX9NdnhuAgj426ABx60C4Y8'
+    api_key = 
 
 
     def __init__(self, channel_id: str) -> None:
