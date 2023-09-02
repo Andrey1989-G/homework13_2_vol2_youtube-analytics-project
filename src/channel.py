@@ -20,8 +20,11 @@ class Channel:
         self.video_count = self.channel['items'][0]['statistics']['videoCount']
         self.view_count = self.channel['items'][0]['statistics']['viewCount']
 
-    def __repr__(self):
-        return self.url
+    # def __repr__(self):
+    #     return self.url
+
+    def __str__(self):
+        return f'{self.title} ({self.url})'
 
     def __add__(self, other):
         """оператор сложения"""
