@@ -10,7 +10,6 @@ class Channel:
 
     def __init__(self, channel_id: str) -> None:
         """Экземпляр инициализируется id канала. Дальше все данные будут подтягиваться по API."""
-        # self.__channel_id = channel_id
         self.__channel_id = channel_id
         self.youtube = build('youtube', 'v3', developerKey=Channel.api_key)
         self.channel = self.youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
@@ -20,6 +19,37 @@ class Channel:
         self.subscriber_count = self.channel['items'][0]['statistics']['subscriberCount']
         self.video_count = self.channel['items'][0]['statistics']['videoCount']
         self.view_count = self.channel['items'][0]['statistics']['viewCount']
+
+    def __repr__(self):
+        return self.url
+
+    def __add__(self, other):
+        """оператор сложения"""
+        return int(self.subscriber_count) + int(other.subscriber_count)
+
+    def __sub__(self, other):
+        """метод для операции вычитания"""
+        return int(self.subscriber_count) - int(other.subscriber_count)
+
+    def __gt__(self, other):
+        """метод для операции сравнения «больше»"""
+        return int(self.subscriber_count) > int(other.subscriber_count)
+
+    def __ge__(self, other):
+        """метод для операции сравнения «больше или равно»"""
+        return int(self.subscriber_count) >= int(other.subscriber_count)
+
+    def __lt__(self, other):
+        """метод для операции сравнения «меньше»"""
+        return int(self.subscriber_count) < int(other.subscriber_count)
+
+    def __le__(self, other):
+        """метод для операции сравнения «меньше или равно»"""
+        return int(self.subscriber_count) <= int(other.subscriber_count)
+
+    def __eq__(self, other):
+        """строгое сравнение"""
+        return int(self.subscriber_count) == int(other.subscriber_count)
 
     # def __setattr__(self, key, value):
     #     if key == 'channel_id' and not value:
