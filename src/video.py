@@ -34,8 +34,7 @@ class PLVideo(Video):
     def __init__(self, video_id: str, playlist_id: str):
         super().__init__(video_id)
         self.playlist_id = playlist_id
-        self.youtube = build('youtube', 'v3', developerKey=PLVideo.api_key)
-        self.youtube_playlist = self.youtube.playlistItem().list(id=self.playlist_id, part='snippet,statistics').execute()
+
 
 
 
