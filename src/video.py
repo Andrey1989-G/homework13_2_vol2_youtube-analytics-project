@@ -35,6 +35,3 @@ class PLVideo(Video):
         super().__init__(video_id)
         self.playlist_id = playlist_id
 
-
-
-
